@@ -192,13 +192,13 @@ func (db *MockDataStore) Transcoding(ctx context.Context) model.TranscodingRepos
 }
 
 func (db *MockDataStore) Player(ctx context.Context) model.PlayerRepository {
-	if db.MockedPlayer != nil {
-		return db.MockedPlayer
+	if db.MockedPlayer == nil {
+		if db.RealDS != nil {
+			db.MockedPlayer = db.RealDS.Player(ctx)
+		} else {
+			db.MockedPlayer = CreateMockPlayerRepo()
+		}
 	}
-	if db.RealDS != nil {
-		return db.RealDS.Player(ctx)
-	}
-	db.MockedPlayer = struct{ model.PlayerRepository }{}
 	return db.MockedPlayer
 }
 

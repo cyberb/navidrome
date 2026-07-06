@@ -128,6 +128,7 @@ const ApiKeySection = () => {
               </InputAdornment>
             ),
           }}
+          inputProps={{ 'data-testid': 'api-key-value' }}
           style={{ width: 320, color: 'black' }}
         />
       ) : (
@@ -143,6 +144,7 @@ const ApiKeySection = () => {
 
       <Button
         style={{ marginTop: 12, alignSelf: 'flex-start' }}
+        data-testid="generate-api-key"
         onClick={generateApiKey}
         label="Generate New API Key"
         startIcon={<VpnKeyIcon />}

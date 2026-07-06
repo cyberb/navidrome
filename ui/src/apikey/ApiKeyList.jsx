@@ -79,6 +79,7 @@ const MaskedKeyField = ({ record, isSimpleMode }) => {
 
   const keyVisibilityButton = (
     <IconButton
+      data-testid="apikey-show"
       className={classes.visibilityButton}
       onClick={toggleVisibility}
       size="small"
@@ -102,7 +103,7 @@ const MaskedKeyField = ({ record, isSimpleMode }) => {
 
   return (
     <div className={classes.actionContainer}>
-      <div className={classes.keyContainer}>
+      <div className={classes.keyContainer} data-testid="apikey-value">
         {visible ? record.key : maskKey(record.key)}
       </div>
       {isSimpleMode ? (

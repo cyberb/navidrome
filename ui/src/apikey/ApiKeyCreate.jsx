@@ -48,7 +48,7 @@ const ApiKeyCreate = (props) => {
   return (
     <Create title={<Title subTitle={title} />} {...props}>
       <SimpleForm save={save} variant={'outlined'}>
-        <TextInput source="name" validate={[required()]} autoFocus />
+        <TextInput source="name" validate={[required()]} autoFocus inputProps={{ 'data-testid': 'apikey-name' }} />
       </SimpleForm>
     </Create>
   )

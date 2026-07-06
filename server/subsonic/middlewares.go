@@ -65,6 +65,7 @@ func checkRequiredParameters(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		var requiredParameters []string
 
+		p := req.Params(r)
 		username, _ := fromInternalOrProxyAuth(r)
 		if username != "" {
 			requiredParameters = []string{"v", "c"}

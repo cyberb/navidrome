@@ -14,7 +14,7 @@ func init() {
 func upAddAPIKeyToPlayer(_ context.Context, tx *sql.Tx) error {
 	_, err := tx.Exec(`
 -- Add nullable api_key column to player table
-ALTER TABLE player ADD COLUMN api_key VARCHAR(255);
+ALTER TABLE player ADD COLUMN api_key VARCHAR(255) NOT NULL DEFAULT '';
 
 -- Add index on api_key for faster lookups
 CREATE INDEX IF NOT EXISTS player_api_key ON player(api_key);
